@@ -97,16 +97,13 @@ CucumberHTML.DOMFormatter = function(rootNode) {
     if (currentStepIndex == 1) {
       this.dummyStep();
     }
-    if (mimeType.match(/^image\//))
-    {
+    if (mimeType.match(/^image\//)) {
       currentStep.append('<img src="' + data + '">');
-    }
-    else if (mimeType.match(/^video\//))
-    {
+    } else if (mimeType.match(/^video\//)) {
       currentStep.append('<video src="' + data + '" type="' + mimeType + '" autobuffer controls>Your browser doesn\'t support video.</video>');
-    }
-    else if (mimeType.match(/^text\//))
-    {
+    } else if (mimeType.match(/^application\/pdf/)) {
+      currentStep.append('<embed src="' + data + '" type="' + mimeType + '" autobuffer controls>Your browser doesn\'t support pdfs.</embed>');
+    } else if (mimeType.match(/^text\//)) {
       this.write(data);
     }
   };
